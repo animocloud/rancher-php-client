@@ -2,12 +2,17 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
+use Twig\Environment;
+use Rancher\Model\Base64Model;
+use Twig\Loader\FilesystemLoader;
 
 class APIGenerator
 {
+    public $staticModels = [
+        Base64Model::class => './static/Model/Base64Model.php',
+    ];
+    
     private $_config = null;
 
     public function __construct($config)
@@ -36,6 +41,10 @@ class APIGenerator
 
             echo $group . " done\n";
         }
+
+        $this->buildStaticModels();
+
+        echo "static/models done\n";
     }
 
     private function retrieveEndpoint(string $endpoint)
@@ -269,6 +278,15 @@ class APIGenerator
         }
     }
 
+    private function buildStaticModels()
+    {
+        foreach ($this->staticModels as $staticModelName => $modelFilePath) {
+            $modelContents = file_get_contents($modelFilePath);
+
+            file_put_contents('../src/Model/' . self::classBasename($staticModelName) . '.php', $modelContents);    
+        }
+    }
+
     private function clearDirectory($path)
     {
         $files = glob($path);
@@ -280,6 +298,13 @@ class APIGenerator
                 unlink($file);
             }
         }
+    }
+
+    private static function classBasename($class)
+    {
+        $class = is_object($class) ? get_class($class) : $class;
+
+        return basename(str_replace('\\', '/', $class));        
     }
 }
 

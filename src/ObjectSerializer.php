@@ -301,6 +301,13 @@ class ObjectSerializer
             settype($data, $class);
 
             return $data;
+        } elseif ($class === '\Rancher\Model\Base64Model')
+        {
+            $instance = new $class();
+
+            $instance->setEncodedString($data);
+
+            return $instance;
         }
         else
         {
