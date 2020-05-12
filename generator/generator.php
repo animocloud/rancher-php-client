@@ -45,10 +45,15 @@ class APIGenerator
         curl_setopt($ch, CURLOPT_URL,  $this->_config['rancher_url'] . $endpoint);
         curl_setopt($ch, CURLOPT_USERPWD, $this->_config['rancher_token'] . ":" . $this->_config['rancher_secret']);
 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_PORT, 443);
+        curl_setopt($ch, CURLOPT_RESOLVE, [$this->_config['resolver']]);
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $output = curl_exec($ch);
-
+        
         curl_close($ch);
 
         return json_decode($output, true);

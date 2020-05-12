@@ -47,7 +47,6 @@ class GlobalRoleBindingModel implements ArrayAccess
      */
     protected static $canBeUpdated = [
         'annotations',
-        'globalRoleId',
         'labels',
         'userId',
     ];

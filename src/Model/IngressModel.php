@@ -70,7 +70,7 @@ class IngressModel implements ArrayAccess
         'defaultBackend' => '\Rancher\Model\IngressBackendModel',
         'description' => 'string',
         'labels' => 'map[string,string]',
-        'name' => 'string',
+        'name' => '\Rancher\Model\HostnameModel',
         'namespaceId' => 'string',
         'ownerReferences' => '\Rancher\Model\OwnerReferenceModel[]',
         'projectId' => 'string',
@@ -301,7 +301,7 @@ class IngressModel implements ArrayAccess
 
     /**
      * Gets name
-     * @return string
+     * @return \Rancher\Model\HostnameModel
      */
     public function getName()
     {
@@ -310,7 +310,7 @@ class IngressModel implements ArrayAccess
 
     /**
      * Sets name
-     * @param string $name
+     * @param \Rancher\Model\HostnameModel $name
      * @return $this
      */
     public function setName($name)

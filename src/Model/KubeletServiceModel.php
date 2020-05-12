@@ -34,6 +34,7 @@ class KubeletServiceModel implements ArrayAccess
         'extraBinds',
         'extraEnv',
         'failSwapOn',
+        'generateServingCertificate',
         'image',
         'infraContainerImage',
     ];
@@ -55,6 +56,7 @@ class KubeletServiceModel implements ArrayAccess
         'extraBinds',
         'extraEnv',
         'failSwapOn',
+        'generateServingCertificate',
         'image',
         'infraContainerImage',
     ];
@@ -71,6 +73,7 @@ class KubeletServiceModel implements ArrayAccess
         'extraBinds' => 'string[]',
         'extraEnv' => 'string[]',
         'failSwapOn' => 'boolean',
+        'generateServingCertificate' => 'boolean',
         'image' => 'string',
         'infraContainerImage' => 'string',
     ];
@@ -87,6 +90,7 @@ class KubeletServiceModel implements ArrayAccess
         'extraBinds' => 'setExtraBinds',
         'extraEnv' => 'setExtraEnv',
         'failSwapOn' => 'setFailSwapOn',
+        'generateServingCertificate' => 'setGenerateServingCertificate',
         'image' => 'setImage',
         'infraContainerImage' => 'setInfraContainerImage',
     ];
@@ -103,6 +107,7 @@ class KubeletServiceModel implements ArrayAccess
         'extraBinds' => 'getExtraBinds',
         'extraEnv' => 'getExtraEnv',
         'failSwapOn' => 'getFailSwapOn',
+        'generateServingCertificate' => 'getGenerateServingCertificate',
         'image' => 'getImage',
         'infraContainerImage' => 'getInfraContainerImage',
     ];
@@ -120,6 +125,7 @@ class KubeletServiceModel implements ArrayAccess
         $this->container['extraBinds'] = isset($data['extraBinds']) ? $data['extraBinds'] : null;
         $this->container['extraEnv'] = isset($data['extraEnv']) ? $data['extraEnv'] : null;
         $this->container['failSwapOn'] = isset($data['failSwapOn']) ? $data['failSwapOn'] : null;
+        $this->container['generateServingCertificate'] = isset($data['generateServingCertificate']) ? $data['generateServingCertificate'] : null;
         $this->container['image'] = isset($data['image']) ? $data['image'] : null;
         $this->container['infraContainerImage'] = isset($data['infraContainerImage']) ? $data['infraContainerImage'] : null;
     }
@@ -251,6 +257,28 @@ class KubeletServiceModel implements ArrayAccess
     public function setFailSwapOn($failSwapOn)
     {
         $this->container['failSwapOn'] = $failSwapOn;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets generateServingCertificate
+     * @return boolean
+     */
+    public function getGenerateServingCertificate()
+    {
+        return $this->container['generateServingCertificate'];
+    }
+
+    /**
+     * Sets generateServingCertificate
+     * @param boolean $generateServingCertificate
+     * @return $this
+     */
+    public function setGenerateServingCertificate($generateServingCertificate)
+    {
+        $this->container['generateServingCertificate'] = $generateServingCertificate;
 
         return $this;
     }

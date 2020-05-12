@@ -28,12 +28,16 @@ class KubeAPIServiceModel implements ArrayAccess
      * @var array
      */
     protected static $canBeCreated = [
+        'admissionConfiguration',
         'alwaysPullImages',
+        'auditLog',
+        'eventRateLimit',
         'extraArgs',
         'extraBinds',
         'extraEnv',
         'image',
         'podSecurityPolicy',
+        'secretsEncryptionConfig',
         'serviceClusterIpRange',
         'serviceNodePortRange',
     ];
@@ -49,12 +53,16 @@ class KubeAPIServiceModel implements ArrayAccess
      * @var array
      */
     protected static $canBeUpdated = [
+        'admissionConfiguration',
         'alwaysPullImages',
+        'auditLog',
+        'eventRateLimit',
         'extraArgs',
         'extraBinds',
         'extraEnv',
         'image',
         'podSecurityPolicy',
+        'secretsEncryptionConfig',
         'serviceClusterIpRange',
         'serviceNodePortRange',
     ];
@@ -65,12 +73,16 @@ class KubeAPIServiceModel implements ArrayAccess
     }
 
     protected static $typeMap = [
+        'admissionConfiguration' => 'map[string,\Rancher\Model\JsonModel]',
         'alwaysPullImages' => 'boolean',
+        'auditLog' => '\Rancher\Model\AuditLogModel',
+        'eventRateLimit' => '\Rancher\Model\EventRateLimitModel',
         'extraArgs' => 'map[string,string]',
         'extraBinds' => 'string[]',
         'extraEnv' => 'string[]',
         'image' => 'string',
         'podSecurityPolicy' => 'boolean',
+        'secretsEncryptionConfig' => '\Rancher\Model\SecretsEncryptionConfigModel',
         'serviceClusterIpRange' => 'string',
         'serviceNodePortRange' => 'string',
     ];
@@ -81,12 +93,16 @@ class KubeAPIServiceModel implements ArrayAccess
     }
 
     protected static $setters = [
+        'admissionConfiguration' => 'setAdmissionConfiguration',
         'alwaysPullImages' => 'setAlwaysPullImages',
+        'auditLog' => 'setAuditLog',
+        'eventRateLimit' => 'setEventRateLimit',
         'extraArgs' => 'setExtraArgs',
         'extraBinds' => 'setExtraBinds',
         'extraEnv' => 'setExtraEnv',
         'image' => 'setImage',
         'podSecurityPolicy' => 'setPodSecurityPolicy',
+        'secretsEncryptionConfig' => 'setSecretsEncryptionConfig',
         'serviceClusterIpRange' => 'setServiceClusterIpRange',
         'serviceNodePortRange' => 'setServiceNodePortRange',
     ];
@@ -97,12 +113,16 @@ class KubeAPIServiceModel implements ArrayAccess
     }
 
     protected static $getters = [
+        'admissionConfiguration' => 'getAdmissionConfiguration',
         'alwaysPullImages' => 'getAlwaysPullImages',
+        'auditLog' => 'getAuditLog',
+        'eventRateLimit' => 'getEventRateLimit',
         'extraArgs' => 'getExtraArgs',
         'extraBinds' => 'getExtraBinds',
         'extraEnv' => 'getExtraEnv',
         'image' => 'getImage',
         'podSecurityPolicy' => 'getPodSecurityPolicy',
+        'secretsEncryptionConfig' => 'getSecretsEncryptionConfig',
         'serviceClusterIpRange' => 'getServiceClusterIpRange',
         'serviceNodePortRange' => 'getServiceNodePortRange',
     ];
@@ -114,15 +134,41 @@ class KubeAPIServiceModel implements ArrayAccess
 
     public function __construct(array $data = null)
     {
+        $this->container['admissionConfiguration'] = isset($data['admissionConfiguration']) ? $data['admissionConfiguration'] : null;
         $this->container['alwaysPullImages'] = isset($data['alwaysPullImages']) ? $data['alwaysPullImages'] : null;
+        $this->container['auditLog'] = isset($data['auditLog']) ? $data['auditLog'] : null;
+        $this->container['eventRateLimit'] = isset($data['eventRateLimit']) ? $data['eventRateLimit'] : null;
         $this->container['extraArgs'] = isset($data['extraArgs']) ? $data['extraArgs'] : null;
         $this->container['extraBinds'] = isset($data['extraBinds']) ? $data['extraBinds'] : null;
         $this->container['extraEnv'] = isset($data['extraEnv']) ? $data['extraEnv'] : null;
         $this->container['image'] = isset($data['image']) ? $data['image'] : null;
         $this->container['podSecurityPolicy'] = isset($data['podSecurityPolicy']) ? $data['podSecurityPolicy'] : null;
+        $this->container['secretsEncryptionConfig'] = isset($data['secretsEncryptionConfig']) ? $data['secretsEncryptionConfig'] : null;
         $this->container['serviceClusterIpRange'] = isset($data['serviceClusterIpRange']) ? $data['serviceClusterIpRange'] : null;
         $this->container['serviceNodePortRange'] = isset($data['serviceNodePortRange']) ? $data['serviceNodePortRange'] : null;
     }
+
+    /**
+     * Gets admissionConfiguration
+     * @return \Rancher\Model\JsonModel[]
+     */
+    public function getAdmissionConfiguration()
+    {
+        return $this->container['admissionConfiguration'];
+    }
+
+    /**
+     * Sets admissionConfiguration
+     * @param \Rancher\Model\JsonModel[] $admissionConfiguration
+     * @return $this
+     */
+    public function setAdmissionConfiguration($admissionConfiguration)
+    {
+        $this->container['admissionConfiguration'] = $admissionConfiguration;
+
+        return $this;
+    }
+
 
     /**
      * Gets alwaysPullImages
@@ -141,6 +187,50 @@ class KubeAPIServiceModel implements ArrayAccess
     public function setAlwaysPullImages($alwaysPullImages)
     {
         $this->container['alwaysPullImages'] = $alwaysPullImages;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets auditLog
+     * @return \Rancher\Model\AuditLogModel
+     */
+    public function getAuditLog()
+    {
+        return $this->container['auditLog'];
+    }
+
+    /**
+     * Sets auditLog
+     * @param \Rancher\Model\AuditLogModel $auditLog
+     * @return $this
+     */
+    public function setAuditLog($auditLog)
+    {
+        $this->container['auditLog'] = $auditLog;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets eventRateLimit
+     * @return \Rancher\Model\EventRateLimitModel
+     */
+    public function getEventRateLimit()
+    {
+        return $this->container['eventRateLimit'];
+    }
+
+    /**
+     * Sets eventRateLimit
+     * @param \Rancher\Model\EventRateLimitModel $eventRateLimit
+     * @return $this
+     */
+    public function setEventRateLimit($eventRateLimit)
+    {
+        $this->container['eventRateLimit'] = $eventRateLimit;
 
         return $this;
     }
@@ -251,6 +341,28 @@ class KubeAPIServiceModel implements ArrayAccess
     public function setPodSecurityPolicy($podSecurityPolicy)
     {
         $this->container['podSecurityPolicy'] = $podSecurityPolicy;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets secretsEncryptionConfig
+     * @return \Rancher\Model\SecretsEncryptionConfigModel
+     */
+    public function getSecretsEncryptionConfig()
+    {
+        return $this->container['secretsEncryptionConfig'];
+    }
+
+    /**
+     * Sets secretsEncryptionConfig
+     * @param \Rancher\Model\SecretsEncryptionConfigModel $secretsEncryptionConfig
+     * @return $this
+     */
+    public function setSecretsEncryptionConfig($secretsEncryptionConfig)
+    {
+        $this->container['secretsEncryptionConfig'] = $secretsEncryptionConfig;
 
         return $this;
     }

@@ -28,7 +28,11 @@ class IngressConfigModel implements ArrayAccess
      * @var array
      */
     protected static $canBeCreated = [
+        'dnsPolicy',
         'extraArgs',
+        'extraEnvs',
+        'extraVolumeMounts',
+        'extraVolumes',
         'nodeSelector',
         'options',
         'provider',
@@ -45,7 +49,11 @@ class IngressConfigModel implements ArrayAccess
      * @var array
      */
     protected static $canBeUpdated = [
+        'dnsPolicy',
         'extraArgs',
+        'extraEnvs',
+        'extraVolumeMounts',
+        'extraVolumes',
         'nodeSelector',
         'options',
         'provider',
@@ -57,7 +65,11 @@ class IngressConfigModel implements ArrayAccess
     }
 
     protected static $typeMap = [
+        'dnsPolicy' => 'string',
         'extraArgs' => 'map[string,string]',
+        'extraEnvs' => '\Rancher\Model\JsonModel[]',
+        'extraVolumeMounts' => '\Rancher\Model\JsonModel[]',
+        'extraVolumes' => '\Rancher\Model\JsonModel[]',
         'nodeSelector' => 'map[string,string]',
         'options' => 'map[string,string]',
         'provider' => 'string',
@@ -69,7 +81,11 @@ class IngressConfigModel implements ArrayAccess
     }
 
     protected static $setters = [
+        'dnsPolicy' => 'setDnsPolicy',
         'extraArgs' => 'setExtraArgs',
+        'extraEnvs' => 'setExtraEnvs',
+        'extraVolumeMounts' => 'setExtraVolumeMounts',
+        'extraVolumes' => 'setExtraVolumes',
         'nodeSelector' => 'setNodeSelector',
         'options' => 'setOptions',
         'provider' => 'setProvider',
@@ -81,7 +97,11 @@ class IngressConfigModel implements ArrayAccess
     }
 
     protected static $getters = [
+        'dnsPolicy' => 'getDnsPolicy',
         'extraArgs' => 'getExtraArgs',
+        'extraEnvs' => 'getExtraEnvs',
+        'extraVolumeMounts' => 'getExtraVolumeMounts',
+        'extraVolumes' => 'getExtraVolumes',
         'nodeSelector' => 'getNodeSelector',
         'options' => 'getOptions',
         'provider' => 'getProvider',
@@ -94,11 +114,37 @@ class IngressConfigModel implements ArrayAccess
 
     public function __construct(array $data = null)
     {
+        $this->container['dnsPolicy'] = isset($data['dnsPolicy']) ? $data['dnsPolicy'] : null;
         $this->container['extraArgs'] = isset($data['extraArgs']) ? $data['extraArgs'] : null;
+        $this->container['extraEnvs'] = isset($data['extraEnvs']) ? $data['extraEnvs'] : null;
+        $this->container['extraVolumeMounts'] = isset($data['extraVolumeMounts']) ? $data['extraVolumeMounts'] : null;
+        $this->container['extraVolumes'] = isset($data['extraVolumes']) ? $data['extraVolumes'] : null;
         $this->container['nodeSelector'] = isset($data['nodeSelector']) ? $data['nodeSelector'] : null;
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['provider'] = isset($data['provider']) ? $data['provider'] : null;
     }
+
+    /**
+     * Gets dnsPolicy
+     * @return string
+     */
+    public function getDnsPolicy()
+    {
+        return $this->container['dnsPolicy'];
+    }
+
+    /**
+     * Sets dnsPolicy
+     * @param string $dnsPolicy
+     * @return $this
+     */
+    public function setDnsPolicy($dnsPolicy)
+    {
+        $this->container['dnsPolicy'] = $dnsPolicy;
+
+        return $this;
+    }
+
 
     /**
      * Gets extraArgs
@@ -117,6 +163,72 @@ class IngressConfigModel implements ArrayAccess
     public function setExtraArgs($extraArgs)
     {
         $this->container['extraArgs'] = $extraArgs;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets extraEnvs
+     * @return \Rancher\Model\JsonModel[]
+     */
+    public function getExtraEnvs()
+    {
+        return $this->container['extraEnvs'];
+    }
+
+    /**
+     * Sets extraEnvs
+     * @param \Rancher\Model\JsonModel[] $extraEnvs
+     * @return $this
+     */
+    public function setExtraEnvs($extraEnvs)
+    {
+        $this->container['extraEnvs'] = $extraEnvs;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets extraVolumeMounts
+     * @return \Rancher\Model\JsonModel[]
+     */
+    public function getExtraVolumeMounts()
+    {
+        return $this->container['extraVolumeMounts'];
+    }
+
+    /**
+     * Sets extraVolumeMounts
+     * @param \Rancher\Model\JsonModel[] $extraVolumeMounts
+     * @return $this
+     */
+    public function setExtraVolumeMounts($extraVolumeMounts)
+    {
+        $this->container['extraVolumeMounts'] = $extraVolumeMounts;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets extraVolumes
+     * @return \Rancher\Model\JsonModel[]
+     */
+    public function getExtraVolumes()
+    {
+        return $this->container['extraVolumes'];
+    }
+
+    /**
+     * Sets extraVolumes
+     * @param \Rancher\Model\JsonModel[] $extraVolumes
+     * @return $this
+     */
+    public function setExtraVolumes($extraVolumes)
+    {
+        $this->container['extraVolumes'] = $extraVolumes;
 
         return $this;
     }

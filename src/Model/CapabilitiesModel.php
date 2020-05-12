@@ -32,6 +32,8 @@ class CapabilitiesModel implements ArrayAccess
         'loadBalancerCapabilities',
         'nodePoolScalingSupported',
         'nodePortRange',
+        'pspEnabled',
+        'taintSupport',
     ];
 
     public static function canBeCreated()
@@ -49,6 +51,8 @@ class CapabilitiesModel implements ArrayAccess
         'loadBalancerCapabilities',
         'nodePoolScalingSupported',
         'nodePortRange',
+        'pspEnabled',
+        'taintSupport',
     ];
 
     public static function canBeUpdated()
@@ -61,6 +65,8 @@ class CapabilitiesModel implements ArrayAccess
         'loadBalancerCapabilities' => '\Rancher\Model\LoadBalancerCapabilitiesModel',
         'nodePoolScalingSupported' => 'boolean',
         'nodePortRange' => 'string',
+        'pspEnabled' => 'boolean',
+        'taintSupport' => 'boolean',
     ];
 
     public static function typeMap()
@@ -73,6 +79,8 @@ class CapabilitiesModel implements ArrayAccess
         'loadBalancerCapabilities' => 'setLoadBalancerCapabilities',
         'nodePoolScalingSupported' => 'setNodePoolScalingSupported',
         'nodePortRange' => 'setNodePortRange',
+        'pspEnabled' => 'setPspEnabled',
+        'taintSupport' => 'setTaintSupport',
     ];
 
     public static function setters()
@@ -85,6 +93,8 @@ class CapabilitiesModel implements ArrayAccess
         'loadBalancerCapabilities' => 'getLoadBalancerCapabilities',
         'nodePoolScalingSupported' => 'getNodePoolScalingSupported',
         'nodePortRange' => 'getNodePortRange',
+        'pspEnabled' => 'getPspEnabled',
+        'taintSupport' => 'getTaintSupport',
     ];
 
     public static function getters()
@@ -98,6 +108,8 @@ class CapabilitiesModel implements ArrayAccess
         $this->container['loadBalancerCapabilities'] = isset($data['loadBalancerCapabilities']) ? $data['loadBalancerCapabilities'] : null;
         $this->container['nodePoolScalingSupported'] = isset($data['nodePoolScalingSupported']) ? $data['nodePoolScalingSupported'] : null;
         $this->container['nodePortRange'] = isset($data['nodePortRange']) ? $data['nodePortRange'] : null;
+        $this->container['pspEnabled'] = isset($data['pspEnabled']) ? $data['pspEnabled'] : null;
+        $this->container['taintSupport'] = isset($data['taintSupport']) ? $data['taintSupport'] : null;
     }
 
     /**
@@ -183,6 +195,50 @@ class CapabilitiesModel implements ArrayAccess
     public function setNodePortRange($nodePortRange)
     {
         $this->container['nodePortRange'] = $nodePortRange;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets pspEnabled
+     * @return boolean
+     */
+    public function getPspEnabled()
+    {
+        return $this->container['pspEnabled'];
+    }
+
+    /**
+     * Sets pspEnabled
+     * @param boolean $pspEnabled
+     * @return $this
+     */
+    public function setPspEnabled($pspEnabled)
+    {
+        $this->container['pspEnabled'] = $pspEnabled;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets taintSupport
+     * @return boolean
+     */
+    public function getTaintSupport()
+    {
+        return $this->container['taintSupport'];
+    }
+
+    /**
+     * Sets taintSupport
+     * @param boolean $taintSupport
+     * @return $this
+     */
+    public function setTaintSupport($taintSupport)
+    {
+        $this->container['taintSupport'] = $taintSupport;
 
         return $this;
     }

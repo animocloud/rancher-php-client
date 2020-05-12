@@ -29,6 +29,7 @@ class NodeModel implements ArrayAccess
      */
     protected static $canBeCreated = [
         'amazonec2Config',
+        'annotations',
         'azureConfig',
         'clusterId',
         'controlPlane',
@@ -38,6 +39,7 @@ class NodeModel implements ArrayAccess
         'etcd',
         'imported',
         'labels',
+        'linodeConfig',
         'name',
         'namespaceId',
         'nodeTemplateId',
@@ -57,6 +59,7 @@ class NodeModel implements ArrayAccess
      * @var array
      */
     protected static $canBeUpdated = [
+        'annotations',
         'customConfig',
         'description',
         'imported',
@@ -94,6 +97,7 @@ class NodeModel implements ArrayAccess
         'ipAddress' => 'string',
         'labels' => 'map[string,string]',
         'limits' => 'map[string,string]',
+        'linodeConfig' => '\Rancher\Model\LinodeconfigModel',
         'name' => 'string',
         'namespaceId' => 'string',
         'nodeName' => 'string',
@@ -102,6 +106,7 @@ class NodeModel implements ArrayAccess
         'nodeTemplateId' => 'string',
         'ownerReferences' => '\Rancher\Model\OwnerReferenceModel[]',
         'podCidr' => 'string',
+        'podCidrs' => 'string[]',
         'providerId' => 'string',
         'publicEndpoints' => '\Rancher\Model\PublicEndpointModel[]',
         'removed' => '\DateTime',
@@ -149,6 +154,7 @@ class NodeModel implements ArrayAccess
         'ipAddress' => 'setIpAddress',
         'labels' => 'setLabels',
         'limits' => 'setLimits',
+        'linodeConfig' => 'setLinodeConfig',
         'name' => 'setName',
         'namespaceId' => 'setNamespaceId',
         'nodeName' => 'setNodeName',
@@ -157,6 +163,7 @@ class NodeModel implements ArrayAccess
         'nodeTemplateId' => 'setNodeTemplateId',
         'ownerReferences' => 'setOwnerReferences',
         'podCidr' => 'setPodCidr',
+        'podCidrs' => 'setPodCidrs',
         'providerId' => 'setProviderId',
         'publicEndpoints' => 'setPublicEndpoints',
         'removed' => 'setRemoved',
@@ -204,6 +211,7 @@ class NodeModel implements ArrayAccess
         'ipAddress' => 'getIpAddress',
         'labels' => 'getLabels',
         'limits' => 'getLimits',
+        'linodeConfig' => 'getLinodeConfig',
         'name' => 'getName',
         'namespaceId' => 'getNamespaceId',
         'nodeName' => 'getNodeName',
@@ -212,6 +220,7 @@ class NodeModel implements ArrayAccess
         'nodeTemplateId' => 'getNodeTemplateId',
         'ownerReferences' => 'getOwnerReferences',
         'podCidr' => 'getPodCidr',
+        'podCidrs' => 'getPodCidrs',
         'providerId' => 'getProviderId',
         'publicEndpoints' => 'getPublicEndpoints',
         'removed' => 'getRemoved',
@@ -260,6 +269,7 @@ class NodeModel implements ArrayAccess
         $this->container['ipAddress'] = isset($data['ipAddress']) ? $data['ipAddress'] : null;
         $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
         $this->container['limits'] = isset($data['limits']) ? $data['limits'] : null;
+        $this->container['linodeConfig'] = isset($data['linodeConfig']) ? $data['linodeConfig'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['namespaceId'] = isset($data['namespaceId']) ? $data['namespaceId'] : null;
         $this->container['nodeName'] = isset($data['nodeName']) ? $data['nodeName'] : null;
@@ -268,6 +278,7 @@ class NodeModel implements ArrayAccess
         $this->container['nodeTemplateId'] = isset($data['nodeTemplateId']) ? $data['nodeTemplateId'] : null;
         $this->container['ownerReferences'] = isset($data['ownerReferences']) ? $data['ownerReferences'] : null;
         $this->container['podCidr'] = isset($data['podCidr']) ? $data['podCidr'] : null;
+        $this->container['podCidrs'] = isset($data['podCidrs']) ? $data['podCidrs'] : null;
         $this->container['providerId'] = isset($data['providerId']) ? $data['providerId'] : null;
         $this->container['publicEndpoints'] = isset($data['publicEndpoints']) ? $data['publicEndpoints'] : null;
         $this->container['removed'] = isset($data['removed']) ? $data['removed'] : null;
@@ -793,6 +804,28 @@ class NodeModel implements ArrayAccess
 
 
     /**
+     * Gets linodeConfig
+     * @return \Rancher\Model\LinodeconfigModel
+     */
+    public function getLinodeConfig()
+    {
+        return $this->container['linodeConfig'];
+    }
+
+    /**
+     * Sets linodeConfig
+     * @param \Rancher\Model\LinodeconfigModel $linodeConfig
+     * @return $this
+     */
+    public function setLinodeConfig($linodeConfig)
+    {
+        $this->container['linodeConfig'] = $linodeConfig;
+
+        return $this;
+    }
+
+
+    /**
      * Gets name
      * @return string
      */
@@ -963,6 +996,28 @@ class NodeModel implements ArrayAccess
     public function setPodCidr($podCidr)
     {
         $this->container['podCidr'] = $podCidr;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets podCidrs
+     * @return string[]
+     */
+    public function getPodCidrs()
+    {
+        return $this->container['podCidrs'];
+    }
+
+    /**
+     * Sets podCidrs
+     * @param string[] $podCidrs
+     * @return $this
+     */
+    public function setPodCidrs($podCidrs)
+    {
+        $this->container['podCidrs'] = $podCidrs;
 
         return $this;
     }

@@ -351,6 +351,39 @@ class ClusterResource
     }
 
     /**
+     * runSecurityScan
+     *
+     * @param string $id
+     *
+     * @throws RancherException
+     * @return void
+     */
+    public function runSecurityScan($id)
+    {
+        $this->client->request('POST', $this->constructPath() . $id . '?action=runSecurityScan', []);
+
+        return;
+    }
+
+    /**
+     * saveAsTemplate
+     *
+     * @param string $id
+     * @param \Rancher\Model\SaveAsTemplateInputModel $input
+     *
+     * @throws RancherException
+     * @return \Rancher\Model\SaveAsTemplateOutputModel
+     */
+    public function saveAsTemplate($id, $input)
+    {
+        $postData = (array) \Rancher\ObjectSerializer::sanitizeForSerialization($input);
+
+        $response = $this->client->request('POST', $this->constructPath() . $id . '?action=saveAsTemplate', $postData);
+
+        return $this->client->getSerializer()->deserialize($response, '\Rancher\Model\SaveAsTemplateOutputModel');
+    }
+
+    /**
      * viewMonitoring
      *
      * @param string $id

@@ -32,6 +32,7 @@ class Amazonec2configModel implements ArrayAccess
         'ami',
         'blockDurationMinutes',
         'deviceName',
+        'encryptEbsVolume',
         'endpoint',
         'iamInstanceProfile',
         'insecureTransport',
@@ -76,6 +77,7 @@ class Amazonec2configModel implements ArrayAccess
         'ami',
         'blockDurationMinutes',
         'deviceName',
+        'encryptEbsVolume',
         'endpoint',
         'iamInstanceProfile',
         'insecureTransport',
@@ -115,6 +117,7 @@ class Amazonec2configModel implements ArrayAccess
         'ami' => 'string',
         'blockDurationMinutes' => 'string',
         'deviceName' => 'string',
+        'encryptEbsVolume' => 'boolean',
         'endpoint' => 'string',
         'iamInstanceProfile' => 'string',
         'insecureTransport' => 'boolean',
@@ -132,7 +135,7 @@ class Amazonec2configModel implements ArrayAccess
         'securityGroupReadonly' => 'boolean',
         'sessionToken' => 'string',
         'spotPrice' => 'string',
-        'sshKeyContents' => 'string',
+        'sshKeyContents' => '\Rancher\Model\PasswordModel',
         'sshUser' => 'string',
         'subnetId' => 'string',
         'tags' => 'string',
@@ -154,6 +157,7 @@ class Amazonec2configModel implements ArrayAccess
         'ami' => 'setAmi',
         'blockDurationMinutes' => 'setBlockDurationMinutes',
         'deviceName' => 'setDeviceName',
+        'encryptEbsVolume' => 'setEncryptEbsVolume',
         'endpoint' => 'setEndpoint',
         'iamInstanceProfile' => 'setIamInstanceProfile',
         'insecureTransport' => 'setInsecureTransport',
@@ -193,6 +197,7 @@ class Amazonec2configModel implements ArrayAccess
         'ami' => 'getAmi',
         'blockDurationMinutes' => 'getBlockDurationMinutes',
         'deviceName' => 'getDeviceName',
+        'encryptEbsVolume' => 'getEncryptEbsVolume',
         'endpoint' => 'getEndpoint',
         'iamInstanceProfile' => 'getIamInstanceProfile',
         'insecureTransport' => 'getInsecureTransport',
@@ -233,6 +238,7 @@ class Amazonec2configModel implements ArrayAccess
         $this->container['ami'] = isset($data['ami']) ? $data['ami'] : null;
         $this->container['blockDurationMinutes'] = isset($data['blockDurationMinutes']) ? $data['blockDurationMinutes'] : null;
         $this->container['deviceName'] = isset($data['deviceName']) ? $data['deviceName'] : null;
+        $this->container['encryptEbsVolume'] = isset($data['encryptEbsVolume']) ? $data['encryptEbsVolume'] : null;
         $this->container['endpoint'] = isset($data['endpoint']) ? $data['endpoint'] : null;
         $this->container['iamInstanceProfile'] = isset($data['iamInstanceProfile']) ? $data['iamInstanceProfile'] : null;
         $this->container['insecureTransport'] = isset($data['insecureTransport']) ? $data['insecureTransport'] : null;
@@ -345,6 +351,28 @@ class Amazonec2configModel implements ArrayAccess
     public function setDeviceName($deviceName)
     {
         $this->container['deviceName'] = $deviceName;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets encryptEbsVolume
+     * @return boolean
+     */
+    public function getEncryptEbsVolume()
+    {
+        return $this->container['encryptEbsVolume'];
+    }
+
+    /**
+     * Sets encryptEbsVolume
+     * @param boolean $encryptEbsVolume
+     * @return $this
+     */
+    public function setEncryptEbsVolume($encryptEbsVolume)
+    {
+        $this->container['encryptEbsVolume'] = $encryptEbsVolume;
 
         return $this;
     }
@@ -726,7 +754,7 @@ class Amazonec2configModel implements ArrayAccess
 
     /**
      * Gets sshKeyContents
-     * @return string
+     * @return \Rancher\Model\PasswordModel
      */
     public function getSshKeyContents()
     {
@@ -735,7 +763,7 @@ class Amazonec2configModel implements ArrayAccess
 
     /**
      * Sets sshKeyContents
-     * @param string $sshKeyContents
+     * @param \Rancher\Model\PasswordModel $sshKeyContents
      * @return $this
      */
     public function setSshKeyContents($sshKeyContents)

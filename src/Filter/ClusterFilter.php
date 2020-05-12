@@ -44,6 +44,34 @@ class ClusterFilter extends AbstractFilter
 
 
     /**
+     * Gets agentImageOverride
+     * @return string
+     */
+    public function getAgentImageOverride()
+    {
+        return $this->container['agentImageOverride'];
+    }
+
+    /**
+     * Sets agentImageOverride
+     * @param string $agentImageOverride
+     * @param string $option
+     * @return $this
+     */
+    public function setAgentImageOverride($agentImageOverride, $option = '')
+    {
+        if(!empty($option) && in_array($option, $this->allowedOptions))
+        {
+            $option = '_'.$option;
+        }
+
+        $this->container['agentImageOverride'.$option] = $agentImageOverride;
+
+        return $this;
+    }
+
+
+    /**
      * Gets apiEndpoint
      * @return string
      */
@@ -178,6 +206,62 @@ class ClusterFilter extends AbstractFilter
         }
 
         $this->container['caCert'.$option] = $caCert;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets clusterTemplateId
+     * @return string
+     */
+    public function getClusterTemplateId()
+    {
+        return $this->container['clusterTemplateId'];
+    }
+
+    /**
+     * Sets clusterTemplateId
+     * @param string $clusterTemplateId
+     * @param string $option
+     * @return $this
+     */
+    public function setClusterTemplateId($clusterTemplateId, $option = '')
+    {
+        if(!empty($option) && in_array($option, $this->allowedOptions))
+        {
+            $option = '_'.$option;
+        }
+
+        $this->container['clusterTemplateId'.$option] = $clusterTemplateId;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets clusterTemplateRevisionId
+     * @return string
+     */
+    public function getClusterTemplateRevisionId()
+    {
+        return $this->container['clusterTemplateRevisionId'];
+    }
+
+    /**
+     * Sets clusterTemplateRevisionId
+     * @param string $clusterTemplateRevisionId
+     * @param string $option
+     * @return $this
+     */
+    public function setClusterTemplateRevisionId($clusterTemplateRevisionId, $option = '')
+    {
+        if(!empty($option) && in_array($option, $this->allowedOptions))
+        {
+            $option = '_'.$option;
+        }
+
+        $this->container['clusterTemplateRevisionId'.$option] = $clusterTemplateRevisionId;
 
         return $this;
     }
@@ -576,6 +660,34 @@ class ClusterFilter extends AbstractFilter
 
 
     /**
+     * Gets istioEnabled
+     * @return string
+     */
+    public function getIstioEnabled()
+    {
+        return $this->container['istioEnabled'];
+    }
+
+    /**
+     * Sets istioEnabled
+     * @param string $istioEnabled
+     * @param string $option
+     * @return $this
+     */
+    public function setIstioEnabled($istioEnabled, $option = '')
+    {
+        if(!empty($option) && in_array($option, $this->allowedOptions))
+        {
+            $option = '_'.$option;
+        }
+
+        $this->container['istioEnabled'.$option] = $istioEnabled;
+
+        return $this;
+    }
+
+
+    /**
      * Gets name
      * @return string
      */
@@ -738,6 +850,34 @@ class ClusterFilter extends AbstractFilter
         }
 
         $this->container['uuid'.$option] = $uuid;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets windowsPreferedCluster
+     * @return string
+     */
+    public function getWindowsPreferedCluster()
+    {
+        return $this->container['windowsPreferedCluster'];
+    }
+
+    /**
+     * Sets windowsPreferedCluster
+     * @param string $windowsPreferedCluster
+     * @param string $option
+     * @return $this
+     */
+    public function setWindowsPreferedCluster($windowsPreferedCluster, $option = '')
+    {
+        if(!empty($option) && in_array($option, $this->allowedOptions))
+        {
+            $option = '_'.$option;
+        }
+
+        $this->container['windowsPreferedCluster'.$option] = $windowsPreferedCluster;
 
         return $this;
     }

@@ -41,6 +41,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'groupObjectClass',
         'groupSearchAttribute',
         'groupSearchBase',
+        'groupSearchFilter',
         'labels',
         'name',
         'nestedGroupMembershipEnabled',
@@ -58,6 +59,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'userObjectClass',
         'userSearchAttribute',
         'userSearchBase',
+        'userSearchFilter',
     ];
 
     public static function canBeCreated()
@@ -84,6 +86,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'groupObjectClass',
         'groupSearchAttribute',
         'groupSearchBase',
+        'groupSearchFilter',
         'labels',
         'nestedGroupMembershipEnabled',
         'port',
@@ -99,6 +102,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'userObjectClass',
         'userSearchAttribute',
         'userSearchBase',
+        'userSearchFilter',
     ];
 
     public static function canBeUpdated()
@@ -122,6 +126,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'groupObjectClass' => 'string',
         'groupSearchAttribute' => 'string',
         'groupSearchBase' => 'string',
+        'groupSearchFilter' => 'string',
         'labels' => 'map[string,string]',
         'name' => 'string',
         'nestedGroupMembershipEnabled' => 'boolean',
@@ -141,6 +146,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'userObjectClass' => 'string',
         'userSearchAttribute' => 'string',
         'userSearchBase' => 'string',
+        'userSearchFilter' => 'string',
         'uuid' => 'string',
     ];
 
@@ -165,6 +171,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'groupObjectClass' => 'setGroupObjectClass',
         'groupSearchAttribute' => 'setGroupSearchAttribute',
         'groupSearchBase' => 'setGroupSearchBase',
+        'groupSearchFilter' => 'setGroupSearchFilter',
         'labels' => 'setLabels',
         'name' => 'setName',
         'nestedGroupMembershipEnabled' => 'setNestedGroupMembershipEnabled',
@@ -184,6 +191,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'userObjectClass' => 'setUserObjectClass',
         'userSearchAttribute' => 'setUserSearchAttribute',
         'userSearchBase' => 'setUserSearchBase',
+        'userSearchFilter' => 'setUserSearchFilter',
         'uuid' => 'setUuid',
     ];
 
@@ -208,6 +216,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'groupObjectClass' => 'getGroupObjectClass',
         'groupSearchAttribute' => 'getGroupSearchAttribute',
         'groupSearchBase' => 'getGroupSearchBase',
+        'groupSearchFilter' => 'getGroupSearchFilter',
         'labels' => 'getLabels',
         'name' => 'getName',
         'nestedGroupMembershipEnabled' => 'getNestedGroupMembershipEnabled',
@@ -227,6 +236,7 @@ class OpenLdapConfigModel implements ArrayAccess
         'userObjectClass' => 'getUserObjectClass',
         'userSearchAttribute' => 'getUserSearchAttribute',
         'userSearchBase' => 'getUserSearchBase',
+        'userSearchFilter' => 'getUserSearchFilter',
         'uuid' => 'getUuid',
     ];
 
@@ -252,6 +262,7 @@ class OpenLdapConfigModel implements ArrayAccess
         $this->container['groupObjectClass'] = isset($data['groupObjectClass']) ? $data['groupObjectClass'] : null;
         $this->container['groupSearchAttribute'] = isset($data['groupSearchAttribute']) ? $data['groupSearchAttribute'] : null;
         $this->container['groupSearchBase'] = isset($data['groupSearchBase']) ? $data['groupSearchBase'] : null;
+        $this->container['groupSearchFilter'] = isset($data['groupSearchFilter']) ? $data['groupSearchFilter'] : null;
         $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['nestedGroupMembershipEnabled'] = isset($data['nestedGroupMembershipEnabled']) ? $data['nestedGroupMembershipEnabled'] : null;
@@ -271,6 +282,7 @@ class OpenLdapConfigModel implements ArrayAccess
         $this->container['userObjectClass'] = isset($data['userObjectClass']) ? $data['userObjectClass'] : null;
         $this->container['userSearchAttribute'] = isset($data['userSearchAttribute']) ? $data['userSearchAttribute'] : null;
         $this->container['userSearchBase'] = isset($data['userSearchBase']) ? $data['userSearchBase'] : null;
+        $this->container['userSearchFilter'] = isset($data['userSearchFilter']) ? $data['userSearchFilter'] : null;
         $this->container['uuid'] = isset($data['uuid']) ? $data['uuid'] : null;
     }
 
@@ -599,6 +611,28 @@ class OpenLdapConfigModel implements ArrayAccess
     public function setGroupSearchBase($groupSearchBase)
     {
         $this->container['groupSearchBase'] = $groupSearchBase;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets groupSearchFilter
+     * @return string
+     */
+    public function getGroupSearchFilter()
+    {
+        return $this->container['groupSearchFilter'];
+    }
+
+    /**
+     * Sets groupSearchFilter
+     * @param string $groupSearchFilter
+     * @return $this
+     */
+    public function setGroupSearchFilter($groupSearchFilter)
+    {
+        $this->container['groupSearchFilter'] = $groupSearchFilter;
 
         return $this;
     }
@@ -1017,6 +1051,28 @@ class OpenLdapConfigModel implements ArrayAccess
     public function setUserSearchBase($userSearchBase)
     {
         $this->container['userSearchBase'] = $userSearchBase;
+
+        return $this;
+    }
+
+
+    /**
+     * Gets userSearchFilter
+     * @return string
+     */
+    public function getUserSearchFilter()
+    {
+        return $this->container['userSearchFilter'];
+    }
+
+    /**
+     * Sets userSearchFilter
+     * @param string $userSearchFilter
+     * @return $this
+     */
+    public function setUserSearchFilter($userSearchFilter)
+    {
+        $this->container['userSearchFilter'] = $userSearchFilter;
 
         return $this;
     }
