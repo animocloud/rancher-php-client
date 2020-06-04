@@ -226,7 +226,8 @@ class {{ name }}Resource
 {% if args.input is defined %}
         $postData = (array) \Rancher\ObjectSerializer::sanitizeForSerialization($input);
 
-        {% if args.output is defined %}$response = {% endif %}$this->client->request('POST', $this->constructPath() . $id . '?action={{ action }}', $postData);
+        {# Testing (true, false) in `constructPath` method #}
+        {% if args.output is defined %}$response = {% endif %}$this->client->request('POST', $this->constructPath(true, false) . $id . '?action={{ action }}', $postData);
 {% else %}
         {% if args.output is defined %}$response = {% endif %}$this->client->request('POST', $this->constructPath() . $id . '?action={{ action }}', []);
 {% endif %}

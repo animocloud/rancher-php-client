@@ -261,7 +261,7 @@ class PipelineResource
     {
         $postData = (array) \Rancher\ObjectSerializer::sanitizeForSerialization($input);
 
-        $this->client->request('POST', $this->constructPath() . $id . '?action=run', $postData);
+        $this->client->request('POST', $this->constructPath(true, false) . $id . '?action=run', $postData);
 
         return;
     }
